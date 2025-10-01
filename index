@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(to top right, #ffb6c1, #ffe4e1);
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #ff1493;
+      text-shadow: 2px 2px #fff;
+      animation: pop 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes pop {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff69b4, #ff1493);
+      animation: float 8s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-110vh); }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      top: -10px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    /* Surprise button */
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 25px;
+      background: #ff1493;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    /* Hidden message */
+    #surprise {
+      display: none;
+      font-size: 2em;
+      color: #ff0066;
+      margin-top: 30px;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.5);}
+      to { opacity: 1; transform: scale(1);}
+    }
+
+    /* Fireworks */
+    .firework {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: yellow;
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+      from { transform: scale(1); opacity: 1; }
+      to { transform: scale(5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday, zainab 💕 🎂</h1>
+  <p style="font-size:1.5em; color:#d63384;">Wishing you a beautiful birthday, Zainab!!</p>
+
+  <!-- Balloons -->
+  <div class="balloon" style="left:20%; animation-delay: 0s;"></div>
+  <div class="balloon" style="left:40%; animation-delay: 2s; background: radial-gradient(circle, #87ceeb, #4682b4);"></div>
+  <div class="balloon" style="left:60%; animation-delay: 4s; background: radial-gradient(circle, #ffa07a, #ff4500);"></div>
+  <div class="balloon" style="left:80%; animation-delay: 6s; background: radial-gradient(circle, #98fb98, #2e8b57);"></div>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-happyrock.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <!-- Surprise Button -->
+  <button onclick="revealSurprise()">🎁 Click for Surprise 🎁</button>
+
+  <!-- Hidden Message -->
+  <div id="surprise">💌  💖<br> May Allah make every dream of yours come true and surround you with happiness always</div>
+
+  <script>
+    // Generate confetti
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      document.body.appendChild(confetti);
+
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.backgroundColor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+      setTimeout(() => {
+        confetti.remove();
+      }, 5000);
+    }
+    setInterval(createConfetti, 200);
+
+    // Reveal surprise
+    function revealSurprise() {
+      document.getElementById("surprise").style.display = "block";
+
+      // Fireworks effect
+      for (let i = 0; i < 20; i++) {
+        const firework = document.createElement("div");
+        firework.classList.add("firework");
+        firework.style.left = Math.random() * 100 + "vw";
+        firework.style.top = Math.random() * 100 + "vh";
+        firework.style.backgroundColor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+        document.body.appendChild(firework);
+
+        setTimeout(() => {
+          firework.remove();
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+</html>
